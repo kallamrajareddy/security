@@ -1,6 +1,9 @@
 package com.kallam.api.security.user.controller;
 
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -38,6 +41,11 @@ public class UserController {
 			String username = userDetails.getUsername();
 			System.out.println(username);
 		return this.userService.getAll();
+	}
+	
+	@GetMapping("/user-info")
+	public Principal getUser(HttpServletRequest req) {
+		return req.getUserPrincipal();
 	}
 
 }
