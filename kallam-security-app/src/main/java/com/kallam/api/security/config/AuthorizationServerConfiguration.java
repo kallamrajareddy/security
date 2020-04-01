@@ -27,8 +27,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	private CustomUserDetailsService userDetailsService;
 
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.allowFormAuthenticationForClients(); //For authenticating client using the form parameters instead of basic auth 
+	public void configure(final AuthorizationServerSecurityConfigurer security) throws Exception {
+		security
+		.tokenKeyAccess("permitAll()")
+		.checkTokenAccess("isAuthenticated()");
 	}
 
 	@Override
@@ -36,7 +38,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 		clients.inMemory()
 				.withClient("kallam-client")
 				.secret(passwordEncoder.encode("secret"))
-				.authorizedGrantTypes("password", "client_credentials", "refresh_token")
+				.authorizedGrantTypes("password","authorization_code", "client_credentials", "refresh_token")
 				.scopes("all")
 				.accessTokenValiditySeconds(3600)
 				.refreshTokenValiditySeconds(86400);
