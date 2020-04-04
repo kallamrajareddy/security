@@ -43,8 +43,14 @@ public class UserController {
 		return this.userService.getAll();
 	}
 	
+	@GetMapping("/user-details")
+	@PreAuthorize("hasAuthority('ROLE_SUPER') or hasAuthority('ROLE_ADMIN')")
+	public User getUser(HttpServletRequest req) {
+		return this.userService.findByUsername(req.getUserPrincipal().getName());
+	}
+	
 	@GetMapping("/user-info")
-	public Principal getUser(HttpServletRequest req) {
+	public Principal getAuthUser(HttpServletRequest req) {
 		return req.getUserPrincipal();
 	}
 

@@ -17,6 +17,7 @@ public class User {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 	private List<String> roles;
+	private String assComp;
 	private String phoneNo;
 	private String email;
 	private String locale;
@@ -27,13 +28,14 @@ public class User {
 
 	}
 
-	public User(String name, String username, String password, List<String> roles, String phoneNo,
+	public User(String name, String username, String password, List<String> roles, String assComp, String phoneNo,
 			String email, String locale, Boolean active, List<Address> addressLst) {
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
 		this.phoneNo = phoneNo;
+		this.assComp = assComp;
 		this.email = email;
 		this.locale = locale;
 		this.active = active;
@@ -78,6 +80,14 @@ public class User {
 
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+
+	public String getAssComp() {
+		return assComp;
+	}
+
+	public void setAssComp(String assComp) {
+		this.assComp = assComp;
 	}
 
 	public String getPhoneNo() {
