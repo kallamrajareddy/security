@@ -44,7 +44,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/user-details")
-	@PreAuthorize("hasAuthority('ROLE_SUPER') or hasAuthority('ROLE_ADMIN')")
+	@PreAuthorize("hasAuthority('ROLE_SUPER') or hasAuthority('ROLE_ADMIN')  or hasAuthority('ROLE_USER')")
 	public User getUser(HttpServletRequest req) {
 		return this.userService.findByUsername(req.getUserPrincipal().getName());
 	}
