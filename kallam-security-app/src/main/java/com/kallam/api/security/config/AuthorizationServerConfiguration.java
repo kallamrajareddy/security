@@ -40,7 +40,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 				.secret(passwordEncoder.encode("secret"))
 				.authorizedGrantTypes("password","authorization_code", "client_credentials", "refresh_token")
 				.scopes("all")
-				.accessTokenValiditySeconds(3600)
+				.accessTokenValiditySeconds(86400)
 				.refreshTokenValiditySeconds(86400);
 	}
 
